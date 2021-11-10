@@ -17,5 +17,8 @@ FROM debian:bullseye-slim AS glbd
 
 COPY --from=builder /usr/local/sbin/glbd /usr/local/sbin/glbd
 
+RUN apt-get udpate \
+ && apt-get install -y netcat
+
 ENTRYPOINT [ "/usr/local/sbin/glbd" ]
 CMD [ "--help" ]
